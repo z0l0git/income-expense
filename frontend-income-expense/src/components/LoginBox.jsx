@@ -56,6 +56,7 @@ export const LoginBox = () => {
         <InputBox
           handleChange={handleChange}
           name="password"
+          withEye={true}
           type="password"
           placeholder="Password"
         />

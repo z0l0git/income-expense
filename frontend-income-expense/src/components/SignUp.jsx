@@ -74,12 +74,14 @@ export const SignUp = () => {
           handleChange={handleChange}
           name="password"
           type="password"
+          withEye={true}
           placeholder="Password"
         />
         <InputBox
           handleChange={handleRepassword}
           name="repassword"
           type="password"
+          withEye={true}
           placeholder="Re-Password"
         />
         <Button handleSubmit={handleSubmit} label="Sign Up" />

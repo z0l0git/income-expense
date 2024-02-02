@@ -8,7 +8,7 @@ export default function Home() {
           <LoginBox />
         </div>
       </div>
-      <div className="w-[50%] h-screen bg-[#0166FF]">half</div>
+      <div className="w-[50%] h-screen bg-[#0166FF]"></div>
     </div>
   );
 }

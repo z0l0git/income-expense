@@ -13,7 +13,6 @@ export const createNewUser = async (req, res) => {
     }
     const newUserFile = await fs.readFileSync(userDB, "utf-8");
 
-    console.log(newUserFile);
     const data = JSON.parse(newUserFile);
     if (data.find((user) => user.email === email)) {
       throw new Error("User already exists");

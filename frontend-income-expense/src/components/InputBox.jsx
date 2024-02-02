@@ -22,10 +22,10 @@ export const InputBox = ({
         name={name}
         type={!withEye ? type : withEye && show ? "text" : "password"}
         placeholder={placeholder}
-        className="w-full h-full bg-gray-100 rounded-md px-4 border-2 border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
+        className="w-full absolute object-fit-contain h-full bg-gray-100 rounded-md px-4 border-2 border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
       />
       <div
-        className="absolute top-4 right-8 cursor-pointer flex justify-center items-center"
+        className="absolute top-[40%] right-[10%] cursor-pointer flex justify-center items-center"
         style={{
           display: type === "password" ? "block" : "none",
         }}
@@ -33,10 +33,12 @@ export const InputBox = ({
         <FaEye
           className={`absolute ${show ? "block" : "hidden"}`}
           onClick={handleClick}
+          color="#0166FF"
         />
         <FaEyeSlash
           className={`absolute ${show ? "hidden" : "block"}`}
           onClick={handleClick}
+          color="#0166FF"
         />
       </div>
     </div>

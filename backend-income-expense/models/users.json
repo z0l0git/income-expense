@@ -23,5 +23,15 @@
     "username": "user1",
     "email": "user1@gmail.com",
     "password": "$2b$10$iMIxbgnqOKyPn6mHmMb9yOkZkKUkDDOQPPCcqHW9gCuQGHZdFwFju"
+  },
+  {
+    "username": "admin2",
+    "email": "admin2@gmail.com",
+    "password": "$2b$10$4F0Ho.7Tpvdpcqgx9cNcSOUpJSUl8ckhXJ1YCN8TZ7LjqNYE4JFAK"
+  },
+  {
+    "username": "admin3",
+    "email": "admin3@gmail.com",
+    "password": "$2b$10$ZjTCyK5RL/a/TTdyg0H3NeAg5HIjSYORBqHfO3cyWEUDTIO0lKJw2"
   }
 ]

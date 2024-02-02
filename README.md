@@ -1,8 +1,4 @@
 # income-expense
 
-
-<p align="center">
-  <img src="https://github.com/z0l0git/income-expense/assets/143938159/1d900807-0d6f-4942-a2ca-253ff21ca819" width="350" title="Login Page">
-  <span>Login Page</span>
-
-</p>
+[Figma Live Embed Kit
+]([https://www.figma.com/developers/embed](https://www.figma.com/file/W4yLppoX4Ihrz3cahxnbXu/Expense-Tracker?type=design&node-id=11%3A39&mode=design&t=C60KzocRbtJ1jdwJ-1)https://www.figma.com/file/W4yLppoX4Ihrz3cahxnbXu/Expense-Tracker?type=design&node-id=11%3A39&mode=design&t=C60KzocRbtJ1jdwJ-1)

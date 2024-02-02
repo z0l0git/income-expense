@@ -1,6 +1,5 @@
 # income-expense
 
-[Figma
-]([https://www.figma.com/developers/embed](https://www.figma.com/file/W4yLppoX4Ihrz3cahxnbXu/Expense-Tracker?type=design&node-id=11%3A39&mode=design&t=C60KzocRbtJ1jdwJ-1)https://www.figma.com/file/W4yLppoX4Ihrz3cahxnbXu/Expense-Tracker?type=design&node-id=11%3A39&mode=design&t=C60KzocRbtJ1jdwJ-1)
+[![FLipkart](/assets/img/buttons/[flipkart.png](https://github.com/z0l0git/income-expense/assets/143938159/20b3f530-10c2-49ea-ab9e-5003e2c10fca))](https://www.figma.com/file/W4yLppoX4Ihrz3cahxnbXu/Expense-Tracker?type=design&node-id=439%3A4276&mode=design&t=C60KzocRbtJ1jdwJ-1){:target="_blank"}
 
-<img width="778" alt="Embed real-time Figma designs" src="https://user-images.githubusercontent.com/1117126/39676643-a37f372e-516e-11e8-8a7b-8b83849b43b9.png">
+

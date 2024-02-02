@@ -3,13 +3,10 @@
 import fs from "fs";
 import { makeHash } from "../../utils/passwordHash.js";
 
-// const userDB =
-//   "C:/Users/zolba/OneDrive/Desktop/Projects/Backend/BackEND/nodejs/models/users.json";
 const userDB = "./models/users.json";
 
 export const createNewUser = async (req, res) => {
-  const { username, email, password, followers, following, profile_pic } =
-    req.body;
+  const { username, email, password } = req.body;
   try {
     if (!username || !email || !password) {
       throw new Error("Please fill all the fields");
@@ -25,9 +22,6 @@ export const createNewUser = async (req, res) => {
       username,
       email,
       password: makeHash(password),
-      followers: "0",
-      following: "0",
-      profile_pic: "default.img",
     });
     await fs.writeFileSync(userDB, JSON.stringify(data));
     return "success";

@@ -1,5 +1,7 @@
 import { LoginBox } from "@/components/LoginBox";
 
+// Renders Login Page in "/login route"
+// It contains LoginBox component
 export default function Home() {
   return (
     <div className="w-full h-screen flex justify-center items-center">

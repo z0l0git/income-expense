@@ -1,3 +1,4 @@
+// Imports
 import Image from "next/image";
 import { useState } from "react";
 import { InputBox } from "@/components/InputBox";
@@ -5,15 +6,21 @@ import { Button } from "@/components/Button";
 import { useRouter } from "next/router";
 import axios from "axios";
 
+// LoginBox Component: Renders and handles login form
+
 export const LoginBox = () => {
+  // User data storage useState
   const [userData, setUserData] = useState({});
+  // Router
   const { push } = useRouter();
   const url = "http://localhost:4000/users/login";
 
+  // Handles page jump to signup page
   const handleJump = () => {
     push("/signup");
   };
 
+  // Stores input values to userData state
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({
@@ -21,10 +28,12 @@ export const LoginBox = () => {
       [name]: value,
     });
   };
-  const handleSubmit = (e) => {
+
+  // Handles form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.post(url, userData).then((res) => {
+      await axios.post(url, userData).then((res) => {
         console.log(res.data);
         if (res.data !== "Invalid email or password") {
           push("/");

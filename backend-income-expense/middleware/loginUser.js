@@ -1,4 +1,5 @@
 import fs from "fs";
+import jwt from "jsonwebtoken";
 const userDB = "./models/users.json";
 import { compareHash } from "../utils/passwordHash.js";
 
@@ -8,13 +9,15 @@ export const loginUser = async (req, res, next) => {
     if (!email || !password) {
       res.send("Please provide email and password");
     }
+    if (email === "" || password === "") {
+      res.send("Please provide email and password");
+    }
     const users = await JSON.parse(fs.readFileSync(userDB, "utf-8"));
     const user = users.find((user) => user.email === email);
     if (!user) {
       throw new Error("Invalid email or password");
     }
     const checkPassword = compareHash(password, user.password);
-
     if (checkPassword) {
       req.userData = user;
       next();

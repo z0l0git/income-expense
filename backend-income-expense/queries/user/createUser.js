@@ -1,29 +1,58 @@
-//Create user
-
+//Imports
 import fs from "fs";
 import { makeHash } from "../../utils/passwordHash.js";
 
+//Database
 const userDB = "./models/users.json";
+//Today's date to variable
+const date = new Date();
+
+// Date Formatting to yyy-mm-dd
+const dateFormatter = Intl.DateTimeFormat("sv-SE");
+
+//Create new user
 
 export const createNewUser = async (req, res) => {
-  const { username, email, password } = req.body;
+  //Destructuring
+  const { username, email: upEmail, password } = req.body;
+
+  //Try catch block
   try {
-    if (!username || !email || !password) {
+    //Check if all fields are filled
+    if (!username || !upEmail || !password) {
       throw new Error("Please fill all the fields");
     }
+
+    //Check if password is at least 5 characters long
+    if (password.length < 5) {
+      throw new Error("Password must be at least 5 characters long");
+    }
+
+    //Check if email is valid
+    if (!upEmail.includes("@")) {
+      throw new Error("Please enter a valid email");
+    }
+
+    //Read user database and put in temporary variable
     const newUserFile = await fs.readFileSync(userDB, "utf-8");
 
+    //Check if user already exists
     const data = JSON.parse(newUserFile);
-    if (data.find((user) => user.email === email)) {
+    if (data.find(({ email }) => email === upEmail)) {
       throw new Error("User already exists");
     }
+
+    //Push new user to database
     data.push({
       username,
-      email,
+      email: upEmail,
       password: makeHash(password),
+      createdAt: dateFormatter.format(date),
     });
+
+    //Write new user to database
     await fs.writeFileSync(userDB, JSON.stringify(data));
-    return "success";
+    return "User created successfully";
   } catch (error) {
     throw new Error(error.message);
   }

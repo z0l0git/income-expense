@@ -1,7 +1,7 @@
+// Imports
 import { createNewUser } from "../queries/user/createUser.js";
 
-//Get user by Email
-
+//Get Data of logged in user
 export const getLoggedInUserService = async (req, res) => {
   try {
     res.status(200);
@@ -11,12 +11,11 @@ export const getLoggedInUserService = async (req, res) => {
   }
 };
 
-//Create user
-
+//Create new user
 export const createNewUserService = async (req, res) => {
   try {
-    const user = await createNewUser(req);
-    res.send(JSON.stringify(user));
+    const data = await createNewUser(req);
+    res.send(JSON.stringify(data));
   } catch (err) {
     res.status(500).send(err.message);
   }

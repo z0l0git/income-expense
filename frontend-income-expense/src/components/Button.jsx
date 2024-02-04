@@ -1,3 +1,4 @@
+// This is a component that renders a blue button.
 export const Button = ({ handleSubmit, label }) => {
   return (
     <button

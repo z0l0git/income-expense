@@ -14,6 +14,9 @@ export const LoginBox = () => {
   };
   // User data storage useState
   const [userData, setUserData] = useState({});
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
   // Router
   const { push } = useRouter();
   const url = "http://localhost:4000/users/login";
@@ -41,7 +44,8 @@ export const LoginBox = () => {
         if (res.data !== "Invalid email or password") {
           push("/");
         } else {
-          alert(res.data);
+          setError(true);
+          setErrorMsg(res.data);
         }
       });
     } catch (error) {
@@ -101,6 +105,7 @@ export const LoginBox = () => {
             Login
           </button>
         </form>
+        {error && <p className="text-red-500 text-center">{errorMsg}</p>}
       </div>
       <div>
         <p>

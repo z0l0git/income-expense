@@ -25,12 +25,8 @@ export const createNewUser = async (req, res) => {
 
     //Check if password is at least 5 characters long
     if (password.length < 5) {
+      console.log("password length");
       throw new Error("Password must be at least 5 characters long");
-    }
-
-    //Check if email is valid
-    if (!upEmail.includes("@")) {
-      throw new Error("Please enter a valid email");
     }
 
     //Read user database and put in temporary variable

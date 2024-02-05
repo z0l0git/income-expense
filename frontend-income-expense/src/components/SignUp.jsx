@@ -9,6 +9,9 @@ import axios from "axios";
 export const SignUp = () => {
   const [show, setShow] = useState(true);
   const [reshow, setReshow] = useState(true);
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
   // Handles the password visibility
   const handleClick = () => {
     setShow(!show);
@@ -88,12 +91,14 @@ export const SignUp = () => {
             if (res.data !== "User already exists") {
               push("/login");
             } else {
-              alert(res.data);
+              console.log(res.data);
             }
           });
         }
       } catch (err) {
-        alert(err.message);
+        // Alerts the user if there is an error
+        setError(true);
+        setErrorMsg(err.response.data);
       }
     }
   };
@@ -174,6 +179,8 @@ export const SignUp = () => {
         {passerror && (
           <p className="text-red-500 text-center">•Passwords do not match</p>
         )}
+        {error && <p className="text-red-500 text-center">{errorMsg}</p>}
+
         <button
           className="w-full h-full bg-blue-500 rounded-xl text-white"
           type="submit"

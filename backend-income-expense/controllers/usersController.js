@@ -15,8 +15,9 @@ export const getLoggedInUserService = async (req, res) => {
 export const createNewUserService = async (req, res) => {
   try {
     const data = await createNewUser(req);
+
     res.send(JSON.stringify(data));
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(400).send(err.message);
   }
 };

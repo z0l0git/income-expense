@@ -21,13 +21,14 @@ export const InputBox = ({
   };
   // Render the component
   return (
-    <div className="w-full h-1/3 flex justify-end items-center relative">
+    <form className="w-full h-1/3 flex justify-end items-center relative">
       <input
         onChange={handleChange}
         name={name}
         type={!withEye ? type : withEye && show ? "text" : "password"}
         placeholder={placeholder}
         className="w-full object-fit-contain h-full bg-gray-200 rounded-md px-4 border-2 border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
+        required
       />
       <div
         className="absolute right-4 cursor-pointer flex justify-center items-center"
@@ -46,6 +47,6 @@ export const InputBox = ({
           color="#0166FF"
         />
       </div>
-    </div>
+    </form>
   );
 };

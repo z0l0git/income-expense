@@ -1,16 +1,33 @@
 // Imports
 import Image from "next/image";
-import { useState } from "react";
-import { InputBox } from "../components/InputBox";
-import { Button } from "../components/Button";
+import { useEffect, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/router";
 import axios from "axios";
 
 // Component that renders the sign up page and handles the sign up process
 export const SignUp = () => {
+  const [show, setShow] = useState(true);
+  const [reshow, setReshow] = useState(true);
+  // Handles the password visibility
+  const handleClick = () => {
+    setShow(!show);
+  };
+  const handleReclick = () => {
+    setReshow(!reshow);
+  };
   // States that stores the user data and the re-entered password
-  const [userData, setUserData] = useState({});
-  const [repassword, setRepassword] = useState({});
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [repassword, setRepassword] = useState({
+    repassword: "",
+  });
+  const [passerror, setPasserror] = useState(false);
+
+  // Router hook
 
   const { push } = useRouter();
   const url = "http://localhost:4000/users";
@@ -27,7 +44,6 @@ export const SignUp = () => {
       ...repassword,
       repassword: value,
     });
-    console.log(repassword.repassword);
   };
 
   // Stores user inputs in the userData state
@@ -37,7 +53,16 @@ export const SignUp = () => {
       ...userData,
       [name]: value,
     });
+    console.log(userData);
   };
+
+  useEffect(() => {
+    if (userData.password === repassword.repassword) {
+      setPasserror(false);
+    } else {
+      setPasserror(true);
+    }
+  }, [userData, repassword]);
 
   // Handles submit and sends the user data to the server
   const handleSubmit = async (e) => {
@@ -49,13 +74,14 @@ export const SignUp = () => {
       userData.password === "" ||
       repassword.repassword === ""
     ) {
-      alert("Please fill in all fields");
+      // Alerts the user if any field is empty
+      alert("Please fill all the fields");
     } else {
       // Tries to send the user data to the server
       try {
         // Checks if the 2 passwords match
         if (userData.password !== repassword.repassword) {
-          alert("Passwords do not match");
+          setPasserror(true);
         } else {
           // Sends the user data to the server if the passwords match
           await axios.post(url, userData).then((res) => {
@@ -80,35 +106,81 @@ export const SignUp = () => {
         <h1 className="text-2xl font-bold">Create Geld account</h1>
         <p>Sign up below to create your Wallet account</p>
       </div>
-      <div className="flex flex-col gap-6 w-full h-full">
-        <InputBox
-          handleChange={handleChange}
+      <form
+        className="flex flex-col gap-4 w-full h-1/2"
+        action=""
+        onSubmit={handleSubmit}
+      >
+        <input
+          onChange={handleChange}
           name="username"
           type="text"
           placeholder="Name"
+          className="inputStyle"
+          required
         />
-        <InputBox
-          handleChange={handleChange}
+        <input
+          onChange={handleChange}
           name="email"
-          type="text"
+          type="email"
           placeholder="Email"
+          className="inputStyle"
+          required
         />
-        <InputBox
-          handleChange={handleChange}
-          name="password"
-          type="password"
-          withEye={true}
-          placeholder="Password"
-        />
-        <InputBox
-          handleChange={handleRepassword}
-          name="repassword"
-          type="password"
-          withEye={true}
-          placeholder="Re-Password"
-        />
-        <Button handleSubmit={handleSubmit} label="Sign Up" />
-      </div>{" "}
+        <div className="w-full h-full relative flex items-center">
+          <input
+            onChange={handleChange}
+            name="password"
+            type={show ? "password" : "text"}
+            placeholder="Password"
+            className="inputStyle"
+            required
+          />
+          <div className="absolute right-0 w-10 h-10 cursor-pointer flex justify-center items-center">
+            <FaEye
+              className={` ${show ? "block" : "hidden"}`}
+              onClick={handleClick}
+              color="#0166FF"
+            />
+            <FaEyeSlash
+              className={` ${show ? "hidden" : "block"}`}
+              onClick={handleClick}
+              color="#0166FF"
+            />
+          </div>
+        </div>
+        <div className="w-full h-full relative flex items-center">
+          <input
+            onChange={handleRepassword}
+            name="repassword"
+            type={reshow ? "password" : "text"}
+            placeholder="Re-Password"
+            className="inputStyle"
+            required
+          />
+          <div className="absolute right-0 w-10 h-10 cursor-pointer flex justify-center items-center">
+            <FaEye
+              className={` ${reshow ? "block" : "hidden"}`}
+              onClick={handleReclick}
+              color="#0166FF"
+            />
+            <FaEyeSlash
+              className={` ${reshow ? "hidden" : "block"}`}
+              onClick={handleReclick}
+              color="#0166FF"
+            />
+          </div>
+        </div>
+        {passerror && (
+          <p className="text-red-500 text-center">•Passwords do not match</p>
+        )}
+        <button
+          className="w-full h-full bg-blue-500 rounded-xl text-white"
+          type="submit"
+        >
+          Sign Up
+        </button>
+      </form>
       <div>
         <p>
           Already have an account?{" "}

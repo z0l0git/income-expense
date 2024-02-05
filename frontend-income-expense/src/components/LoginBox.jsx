@@ -1,14 +1,17 @@
 // Imports
 import Image from "next/image";
 import { useState } from "react";
-import { InputBox } from "@/components/InputBox";
-import { Button } from "@/components/Button";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/router";
 import axios from "axios";
 
 // LoginBox Component: Renders and handles login form
 
 export const LoginBox = () => {
+  const [show, setShow] = useState(true);
+  const handleClick = () => {
+    setShow(!show);
+  };
   // User data storage useState
   const [userData, setUserData] = useState({});
   // Router
@@ -56,20 +59,48 @@ export const LoginBox = () => {
         <p>Welcome back please enter your details</p>
       </div>
       <div className="flex flex-col gap-6 w-full h-1/3">
-        <InputBox
-          handleChange={handleChange}
-          name="email"
-          type="text"
-          placeholder="Email"
-        />
-        <InputBox
-          handleChange={handleChange}
-          name="password"
-          withEye={true}
-          type="password"
-          placeholder="Password"
-        />
-        <Button handleSubmit={handleSubmit} label="Login" />
+        <form
+          action=""
+          onSubmit={handleSubmit}
+          className="w-full h-full gap-5 flex flex-col relative"
+        >
+          <input
+            onChange={handleChange}
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="inputStyle"
+            required
+          />
+          <div className="w-full h-full relative flex items-center">
+            <input
+              onChange={handleChange}
+              name="password"
+              type={show ? "password" : "text"}
+              placeholder="Password"
+              className="inputStyle"
+              required
+            />
+            <div className="absolute right-0 w-10 h-10 cursor-pointer flex justify-center items-center">
+              <FaEye
+                className={` ${show ? "block" : "hidden"}`}
+                onClick={handleClick}
+                color="#0166FF"
+              />
+              <FaEyeSlash
+                className={` ${show ? "hidden" : "block"}`}
+                onClick={handleClick}
+                color="#0166FF"
+              />
+            </div>
+          </div>
+          <button
+            className="w-full h-full bg-blue-500 rounded-xl text-white"
+            type="submit"
+          >
+            Login
+          </button>
+        </form>
       </div>
       <div>
         <p>

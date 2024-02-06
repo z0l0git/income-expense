@@ -58,7 +58,6 @@ export const SignUp = (props) => {
       ...userData,
       [name]: value,
     });
-    console.log(userData);
   };
 
   useEffect(() => {
@@ -72,7 +71,7 @@ export const SignUp = (props) => {
   // Handles submit and sends the user data to the server
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
+
     if (
       userData.username === "" ||
       userData.email === "" ||

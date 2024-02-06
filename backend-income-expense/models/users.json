@@ -1,20 +1,26 @@
 [
   {
-    "username": "user",
-    "email": "user@gmail.com",
-    "password": "$2b$10$6EdZmBpeI7aLCcCN1.b9L.w8ZfSlkKbVTJKwpOENU7lfKMfJ6jPIy",
-    "createdAt": "2024-02-04"
-  },
-  {
     "username": "admin",
     "email": "admin@gmail.com",
-    "password": "$2b$10$LWrAqm0ktFql4klfNGiMU.6HjsYjD2OprQI4ehm180tQ7ndY.l5Wu",
-    "createdAt": "2024-02-05"
+    "password": "$2b$10$R4Qi5w91kOaWKlPMT242JOuJw2BYOXUSo/swqEZYeNN/th7.M13AS",
+    "createdAt": "2024-02-06"
   },
   {
-    "username": "zolo",
-    "email": "zolo@gmail.com",
-    "password": "$2b$10$UeoSKgluROqSqxFZgy7Gt.mjcJmJADspwGx4f7FFduxmhBDI0DwqW",
-    "createdAt": "2024-02-05"
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "password": "$2b$10$OYiGTtvrAD3Q2k0Jzy.QEeDIx1parG9g8HnQaFkM1CiNO1DznVd4W",
+    "createdAt": "2024-02-06"
+  },
+  {
+    "username": "zolo12",
+    "email": "zolo12@gmail.com",
+    "password": "$2b$10$69hhLpcMZxXXIBgL/F2PIO/GdeD9vfVSDifXa.cXFfdUaXIW/Kxci",
+    "createdAt": "2024-02-06"
+  },
+  {
+    "username": "admin1",
+    "email": "admin1@gmail.com",
+    "password": "$2b$10$49HPUGO5qsZVvlLGEJMdie0PmVW5ojan86UpKUiJoC7UDe8jey3Fi",
+    "createdAt": "2024-02-06"
   }
 ]

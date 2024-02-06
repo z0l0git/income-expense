@@ -19,7 +19,16 @@ export const loginUser = async (req, res, next) => {
     }
     const checkPassword = compareHash(password, user.password);
     if (checkPassword) {
-      req.userData = user;
+      const token = jwt.sign(
+        { email: user.email },
+        process.env.JWT_SECRET || "secret",
+        {
+          expiresIn: "1d",
+        }
+      );
+
+      req.headers.authorization = token;
+
       next();
     } else {
       res.send("Invalid email or password");

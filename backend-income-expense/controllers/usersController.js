@@ -5,7 +5,7 @@ import { createNewUser } from "../queries/user/createUser.js";
 export const getLoggedInUserService = async (req, res) => {
   try {
     res.status(200);
-    res.send(req.userData);
+    res.send(req.headers.authorization);
   } catch (err) {
     res.status(500).send(err.message);
   }

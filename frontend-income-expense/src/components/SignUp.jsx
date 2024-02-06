@@ -8,7 +8,8 @@ import axios from "axios";
 
 // Component that renders the sign up page and handles the sign up process
 export const SignUp = (props) => {
-  const { stage = true } = props;
+  const { stage = 0, nextHandle } = props;
+
   const [show, setShow] = useState(true);
   const [reshow, setReshow] = useState(true);
   const [error, setError] = useState(false);
@@ -69,9 +70,8 @@ export const SignUp = (props) => {
   }, [userData, repassword]);
 
   // Handles submit and sends the user data to the server
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     if (
       userData.username === "" ||
       userData.email === "" ||
@@ -88,25 +88,20 @@ export const SignUp = (props) => {
           setPasserror(true);
         } else {
           // Sends the user data to the server if the passwords match
-          await axios.post(url, userData).then((res) => {
-            if (res.data !== "User already exists") {
-              push("/login");
-            } else {
-              console.log(res.data);
-            }
-          });
+          await axios.post(url, userData);
+
+          nextHandle();
         }
       } catch (err) {
         // Alerts the user if there is an error
         setError(true);
-        setErrorMsg(err.response.data);
       }
     }
   };
   return (
     <div
       className="flex justify-center items-center gap-10 w-full h-full"
-      style={{ display: `${stage ? "flex" : "none"}` }}
+      style={{ display: `${stage === 0 ? "flex" : "none"}` }}
     >
       <div className="flex flex-col gap-10 justify-center items-center w-[50%] h-full">
         <div className=" w-[50%] h-[75%] items-center justify-center flex flex-col gap-10">

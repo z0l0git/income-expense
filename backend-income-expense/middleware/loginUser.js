@@ -28,6 +28,7 @@ export const loginUser = async (req, res, next) => {
       );
 
       req.headers.authorization = token;
+      req.Token = token;
 
       next();
     } else {

@@ -94,6 +94,7 @@ export const SignUp = (props) => {
         }
       } catch (err) {
         // Alerts the user if there is an error
+        setErrorMsg(err.response.data.message);
         setError(true);
       }
     }

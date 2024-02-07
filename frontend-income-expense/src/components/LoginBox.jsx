@@ -42,13 +42,12 @@ export const LoginBox = () => {
       await axios.post(url, userData).then((res) => {
         console.log(res.data);
         localStorage.setItem(`token`, res.data);
-        push("/dashboard");
 
-        if (res.data !== "Invalid email or password") {
-          push("/");
-        } else {
+        if (res.data === "Invalid email or password") {
           setError(true);
           setErrorMsg(res.data);
+        } else {
+          push("/dashboard");
         }
       });
     } catch (error) {

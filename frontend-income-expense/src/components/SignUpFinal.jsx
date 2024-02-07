@@ -1,7 +1,12 @@
 import { Steps } from "@/components/Steps";
 import { FaCheck } from "react-icons/fa6";
+import { useRouter } from "next/router";
 export const SignUpFinal = (props) => {
-  const { stage = 3, nextHandle } = props;
+  const { push } = useRouter();
+  const nextHandle = () => {
+    push("/dashboard");
+  };
+  const { stage = 3 } = props;
   return (
     <div
       className="w-full flex flex-col items-center"

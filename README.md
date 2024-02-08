@@ -1,3 +1,7 @@
+### Users can create account and track their income and expense ammounts
+
+Features chartJS for easy and detailed information about your income and expense.
+
 # ↓ income-expense figma ↓
 
 

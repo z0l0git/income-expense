@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { DoughnutChart } from "@/components";
+import { BarChartCard } from "@/components/BarChartCard";
+
 import { DashCard1 } from "@/components/DashCard1";
 import { DashCard2 } from "@/components/DashCard2";
 
@@ -46,7 +48,8 @@ export default function Home() {
             incomePercent={"32% from last month"}
           />
         </div>
-        <div>
+        <div className="flex h-fit w-full justify-between">
+          <BarChartCard />
           <DoughnutChart />
         </div>
         <div></div>

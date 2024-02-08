@@ -4,6 +4,7 @@ const dataBar = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   datasets: [
     {
+      label: "Income",
       backgroundColor: "#84CC16",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
@@ -14,6 +15,7 @@ const dataBar = {
       data: [3000000, 2200000, 2440000, 1040000, 1500000, 1850000, 2800000],
     },
     {
+      label: "Expense",
       backgroundColor: "#F97316",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
@@ -46,8 +48,8 @@ const options = {
 };
 export const BarChartComp = () => {
   return (
-    <div className="w-[600px] h-[400px] ">
-      <Bar data={dataBar} options={options} width={100} height={50} />
+    <div className="w-full h-full">
+      <Bar data={dataBar} options={options} width={100} height={30} />
     </div>
   );
 };

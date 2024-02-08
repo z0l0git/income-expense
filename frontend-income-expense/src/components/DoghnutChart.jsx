@@ -22,7 +22,7 @@ export const DoughnutChart = () => {
   };
   return (
     <div className="">
-      <div className="card w-[588px] bg-base-100 shadow-xl">
+      <div className="card w-[588px] h-[270px] bg-base-100 shadow-xl">
         <div className="card-body">
           <div className="card-title w-full items-center relative">
             <h1>Income - Expense</h1>

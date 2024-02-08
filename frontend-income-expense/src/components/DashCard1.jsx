@@ -2,7 +2,7 @@ import { FaCircleArrowUp, FaCircleArrowDown } from "react-icons/fa6";
 export const DashCard1 = (props) => {
   const { incomeAmmount, incomePercent } = props;
   return (
-    <div className="card-compact rounded-2xl w-[384px] bg-white shadow-xl">
+    <div className="card-compact rounded-2xl w-1/3 bg-white shadow-xl">
       <div className="card-body justify-between gap-3">
         <div className="card-title">
           <span className="text-[#84CC16] text-[30px]">•</span>

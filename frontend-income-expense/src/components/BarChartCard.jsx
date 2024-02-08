@@ -2,7 +2,7 @@ import { BarChartComp } from "@/components/BarChart";
 
 export const BarChartCard = () => {
   return (
-    <div className="card w-[588px] h-[270px] bg-base-100 shadow-xl">
+    <div className="card w-[48%] h-[270px] bg-base-100 shadow-xl">
       <div className="card-body">
         <div className="card-title w-full items-center relative">
           <h1>Income - Expense</h1>
@@ -10,7 +10,7 @@ export const BarChartCard = () => {
             Jun 1 - Nov 30
           </p>
         </div>
-        <hr className="w-[10000px] -mx-10"></hr>
+        <hr className="w-[800px] -mx-10"></hr>
         <BarChartComp />
       </div>
     </div>

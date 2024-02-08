@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { useState, useContext } from "react";
-import { dataContext } from "@/context/dataContext";
-import { FaCircleArrowUp, FaCircleArrowDown } from "react-icons/fa6";
+import { DoughnutChart } from "@/components";
+import { DashCard1 } from "@/components/DashCard1";
+import { DashCard2 } from "@/components/DashCard2";
 
 // import { DoughnutChart } from "@/components/DoghnutChart";
 export default function Home() {
@@ -36,46 +36,19 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card-compact rounded-2xl w-[384px] bg-white shadow-xl">
-            <div className="card-body justify-between gap-3">
-              <div className="card-title">
-                <span className="text-[#84CC16] text-[30px]">•</span>
-                <h1>Your Income</h1>
-              </div>
-              <hr className="w-[400px] -mx-5"></hr>
-              <div className="mt-[15px] flex flex-col gap-4">
-                <p className="font-bold text-[35px] ">1,200,000₮</p>
-                <p className="text-slate-400 text-[17px]">
-                  Your Income Ammount
-                </p>
-              </div>
-              <div className="h-full flex items-center gap-2 justify-end mt-4">
-                <FaCircleArrowUp color="#84CC16" size={20} />
-                <p>32% from last month</p>
-              </div>
-            </div>
-          </div>
-          <div className="card-compact rounded-2xl w-[384px] bg-white shadow-xl">
-            <div className="card-body justify-between gap-3">
-              <div className="card-title">
-                <span className="text-[#0166FF] text-[30px]">•</span>
-                <h1>Total Expenses</h1>
-              </div>
-              <hr className="w-[400px] -mx-5"></hr>
-              <div className="mt-[15px] flex flex-col gap-4">
-                <p className="font-bold text-[35px] ">-1,200,000₮</p>
-                <p className="text-slate-400 text-[17px]">
-                  Your Income Ammount
-                </p>
-              </div>
-              <div className="h-full flex items-center gap-2 justify-end mt-4">
-                <FaCircleArrowDown color="#84CC16" size={20} />
-                <p>32% from last month</p>
-              </div>
-            </div>
-          </div>
+          <DashCard1
+            incomeAmmount={"1,200,000₮"}
+            incomePercent={"32% from last month"}
+          />
+
+          <DashCard2
+            incomeAmmount={"-1,200,000₮"}
+            incomePercent={"32% from last month"}
+          />
         </div>
-        <div></div>
+        <div>
+          <DoughnutChart />
+        </div>
         <div></div>
         <div></div>
       </div>

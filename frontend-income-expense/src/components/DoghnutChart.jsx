@@ -8,15 +8,16 @@ export const DoughnutChart = () => {
   const data = {
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2],
+        label: [],
+        data: [10, 8, 13, 13, 15],
         backgroundColor: [
+          "#1C64F2",
           "#F2901C",
           "#16BDCA",
           "#FDBA8C",
           "#E74694",
-          "#1C64F2",
         ],
+        borderWidth: [0, 0, 0, 0, 0],
       },
     ],
   };

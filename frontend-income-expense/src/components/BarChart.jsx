@@ -28,29 +28,11 @@ const dataBar = {
     },
   ],
 };
-const options = {
-  plugins: {
-    datalabels: {
-      display: false,
-      color: "blue",
-      formatter: Math.round,
-      anchor: "start",
-      offset: -20,
-      align: "start",
-      position: "bottom",
-    },
-  },
 
-  legend: {
-    display: false,
-    position: "bottom",
-    align: "end",
-  },
-};
 export const BarChartComp = () => {
   return (
     <div className="w-full h-full">
-      <Bar data={dataBar} options={options} width={100} height={30} />
+      <Bar data={dataBar} width={100} height={30} />
     </div>
   );
 };

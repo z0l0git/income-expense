@@ -6,7 +6,7 @@ import { RecordCol } from "@/components/RecordCol";
 export default function Home() {
   return (
     <div className="w-[1440px] h-fit flex flex-col items-center m-auto bg-slate-200">
-      <div className="w-full flex justify-between items-center px-[100px] py-5 bg-white mb-[25px]">
+      <div className="w-screen flex justify-between items-center px-[310px] py-5 bg-white mb-[25px]">
         <div className="flex items-center gap-7 ">
           <Image src="/headerlogo.png" alt="logo" width={40} height={40} />
           <p className="heading-4 font-bold cursor-pointer">Dashboard</p>

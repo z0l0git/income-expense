@@ -16,7 +16,7 @@ export const SignUpThird = (props) => {
         <div className="w-full flex flex-col gap-2 items-center">
           <input
             className="input input-bordered w-full"
-            type="text"
+            type="number"
             placeholder="Ammount"
           />
           <p className="text-[14px] text-gray-500">

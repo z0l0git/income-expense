@@ -15,9 +15,7 @@ export const SignUpSecond = (props) => {
         <h1 className="text-[30px] font-bold">Select base currency</h1>
         <div className="w-full flex flex-col gap-2 items-center">
           <select className="select w-full max-w-xs bg-gray-100 outline-none">
-            <option disabled selected>
-              MNT - Mongolian Tugrik
-            </option>
+            <option selected>MNT - Mongolian Tugrik</option>
             <option>USD - United States Dollar</option>
             <option>EUR - Euro</option>
             <option>JPY - Japanese Yen</option>

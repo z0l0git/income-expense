@@ -2,7 +2,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export const RecordNav = () => {
   return (
-    <div className="flex justify-between items-center px-5 py-3 ">
+    <div className="flex justify-between items-center  py-3 w-full">
       <div className="flex gap-5 items-center">
         <button className="btn btn-square btn-sm">
           <IoIosArrowBack />

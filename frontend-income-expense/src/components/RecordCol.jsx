@@ -7,16 +7,6 @@ import { useState } from "react";
 
 export const RecordCol = () => {
   const [showModal, setShowModal] = useState(false);
-  const [count, setCount] = useState([0, 500]);
-
-  const handleInput1 = (e) => {
-    setCount(e.target.value);
-    console.log(count[0]);
-  };
-  const handleInput2 = (e) => {
-    setCount(e.target.value);
-    console.log(count[1]);
-  };
 
   return (
     <div className=" bg-[#fff] flex flex-col justify-center px-4 py-6 rounded-xl gap-6">
@@ -83,22 +73,14 @@ export const RecordCol = () => {
               type="number"
               placeholder="0"
               className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
-              onChange={handleInput1}
             />
             <input
               type="number"
               placeholder="1000"
               className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
-              onChange={handleInput2}
             />
           </div>
-          <Slider
-            defaultValue={[0, 1000]}
-            value={count}
-            min={0}
-            max={1000}
-            step={1}
-          />
+          <Slider defaultValue={[0, 500]} min={0} max={1000} step={1} />
         </div>
       </div>
     </div>

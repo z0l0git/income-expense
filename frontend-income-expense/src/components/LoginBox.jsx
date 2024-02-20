@@ -4,10 +4,21 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { MdSunny } from "react-icons/md";
+import { IoMdMoon } from "react-icons/io";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeProvider";
 
 // LoginBox Component: Renders and handles login form
 
 export const LoginBox = () => {
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+  const handleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Password visibility state
   const [show, setShow] = useState(true);
   const handleClick = () => {
     setShow(!show);
@@ -116,6 +127,13 @@ export const LoginBox = () => {
             Sign Up
           </span>
         </p>
+      </div>
+      <div>
+        {darkMode ? (
+          <MdSunny className="text-2xl cursor-pointer" onClick={handleTheme} />
+        ) : (
+          <IoMdMoon className="text-2xl cursor-pointer" onClick={handleTheme} />
+        )}
       </div>
     </div>
   );

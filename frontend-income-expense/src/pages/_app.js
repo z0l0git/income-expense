@@ -1,6 +1,10 @@
 import "@/styles/globals.css";
-import dataProvider from "@/context/dataContext";
+import ThemeProvider from "@/context/ThemeProvider";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }

@@ -12,9 +12,21 @@ export const RecordCol = () => {
     <div className=" bg-[#fff] flex flex-col justify-center px-4 py-6 rounded-xl gap-6">
       <h2 className="text-[25px] font-semibold">Records</h2>
       <div className="flex flex-col gap-4">
-        <button className="btn btn-sm h-[35px] text-[15px] rounded-full font-light bg-[#0166FF] text-white px-5">
+        <button
+          className="btn btn-sm h-[35px] text-[15px] rounded-full font-light bg-[#0166FF] text-white px-5"
+          onClick={() => document.getElementById("my_modal_2").showModal()}
+        >
           + Add
         </button>
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Add Record</h3>
+            <p className="py-4">Records</p>
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
 
         <input
           type="text"

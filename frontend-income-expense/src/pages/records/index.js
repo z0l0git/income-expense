@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { RecordNav } from "@/components/RecorcNav";
-import { TiArrowSortedDown } from "react-icons/ti";
+import { Modal } from "@/components/Modal";
 import { RecordCol } from "@/components/RecordCol";
 import { CheckData } from "@/components/CheckData";
 import { MdHomeFilled } from "react-icons/md";
 import { PiForkKnifeFill } from "react-icons/pi";
+
 {
   /* <MdHomeFilled size={22} color="#FFF" /> */
 }
@@ -111,9 +112,7 @@ export default function Home() {
           <p className="cursor-pointer font-bold">Records</p>
         </div>
         <div className="flex items-center gap-5">
-          <button className="btn btn-sm h-[35px] text-[15px] rounded-full bg-[#0166FF] font-semibold text-white px-5">
-            + Record
-          </button>
+          <Modal />
           <Image src="/Avatar.png" alt="avatar" width={40} height={40} />
         </div>
       </div>

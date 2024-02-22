@@ -1,7 +1,15 @@
 import fs from "fs";
 import jwt from "jsonwebtoken";
-const userDB = "./models/users.json";
+// const userDB = "./models/users.json";
 import { compareHash } from "../utils/passwordHash.js";
+import { client } from "/Users/23LP5833/Desktop/income-expense/backend-income-expense/index.js";
+
+const getUserQuery = async (email) => {
+  const loginUserQuery = `SELECT * FROM users WHERE email = $1`;
+  const user = await client.query(loginUserQuery, [email]);
+  console.log(user.rows);
+  return user.rows;
+};
 
 export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
@@ -12,7 +20,7 @@ export const loginUser = async (req, res, next) => {
     if (email === "" || password === "") {
       res.send("Please provide email and password");
     }
-    const users = await JSON.parse(fs.readFileSync(userDB, "utf-8"));
+    const users = await getUserQuery(email, password);
     const user = users.find((user) => user.email === email);
     if (!user) {
       throw new Error("Invalid email or password");
@@ -38,3 +46,5 @@ export const loginUser = async (req, res, next) => {
     res.send(error.message);
   }
 };
+
+/* SELECT * FROM users WHERE (email) VALUES ($1) */

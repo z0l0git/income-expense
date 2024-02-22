@@ -1,16 +1,24 @@
 import React from "react";
 
 import { useState } from "react";
+import { FaCirclePlus, FaGift } from "react-icons/fa6";
+import { GoHomeFill } from "react-icons/go";
+import { PiForkKnifeFill, PiWineFill } from "react-icons/pi";
 
 export const Modal = () => {
   const [button, setButton] = useState(true);
+  const [display, setDisplay] = useState(false);
+
+  const handleDisplay = () => {
+    setDisplay(!display);
+  };
 
   const handleClick = () => {
     setButton(!button);
   };
 
   return (
-    <div>
+    <div className="">
       <button
         className="btn btn-sm h-[35px] text-[15px] rounded-full bg-[#0166FF] font-semibold text-white px-5"
         onClick={() => document.getElementById("my_modal_2").showModal()}
@@ -19,8 +27,8 @@ export const Modal = () => {
       </button>
       <dialog id="my_modal_2" className="modal">
         <div
-          className="modal-box overflow-hidden"
-          style={{ width: "900px", maxWidth: "100%" }}
+          className="modal-box overflow-x-hidden overflow-y-hidden"
+          style={{ width: "900px", maxWidth: "900px" }}
         >
           <h3 className="font-bold text-[20px]">Add Record</h3>
           <hr className="w-[120%] absolute left-0 my-5" />
@@ -28,7 +36,7 @@ export const Modal = () => {
             <div className="w-[48%]">
               <div className="w-full flex rounded-full bg-[#F3F4F6]">
                 <button
-                  className="rounded-full bg-[#0166FF] w-[50%] h-[40px] flex justify-center items-center text-white font-semibold text-[15px] px-[10px] py-2"
+                  className="rounded-full bg-[#0166FF] w-[50%] h-[40px] flex justify-center items-center text-white font-semibold text-[15px] px-[10px] py-2 "
                   style={{
                     backgroundColor: button ? "#0166FF" : "#F3F4F6",
                     color: button ? "white" : "black",
@@ -58,6 +66,54 @@ export const Modal = () => {
               </div>
               <div className="mt-6 w-full py-5 flex flex-col gap-2">
                 <label className="">Category</label>
+                <div className="dropdown w-full">
+                  <div
+                    tabIndex={1000}
+                    role="button"
+                    className="btn m-1 w-full text-left flex justify-start text-[#D1D5DB] text-[16px] hover:bg-slate-100 font-light bg-slate-100 relative"
+                    onClick={handleDisplay}
+                  >
+                    Find or choose category
+                  </div>
+                  <ul
+                    tabIndex={1000}
+                    className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full h-[189px] absolute top-15 z-100000 hidden overflow-y-scroll"
+                    style={{ display: display ? "block" : "none" }}
+                  >
+                    <li>
+                      <div className="flex border-b-4 border-slate-300 ">
+                        <FaCirclePlus color="#0166FF" size={20} />
+                        <p className="text-[16px] ">Add Category</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex  ">
+                        <GoHomeFill color="#0166FF" size={24} />
+                        <p className="text-[16px] ">Home</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex  ">
+                        <FaGift color="#FF4545" size={24} />
+                        <p className="text-[16px] ">Gift</p>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div className="flex  ">
+                        <PiForkKnifeFill color="#FB8A22" size={24} />
+                        <p className="text-[16px] ">Food</p>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div className="flex  ">
+                        <PiWineFill color="#FB8A22" size={24} />
+                        <p className="text-[16px] ">Drinks</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className="flex gap-4 w-full">
                 <div className=" flex flex-col w-[50%]">
@@ -105,7 +161,7 @@ export const Modal = () => {
             </div>
           </div>
         </div>
-        <form method="dialog" className="modal-backdrop">
+        <form method="dialog" className="modal-backdrop z-999 ">
           <button>close</button>
         </form>
       </dialog>

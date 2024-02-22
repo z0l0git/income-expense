@@ -92,7 +92,7 @@ export const RecordCol = () => {
               className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
             />
           </div>
-          <Slider defaultValue={[0, 500]} min={0} max={1000} step={1} />
+          <Slider defaultValue={[0, 1000]} min={0} max={1000} step={1} />
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 // Imports
 import { createNewUser } from "../queries/user/createUser.js";
+import { getLoggedInUser } from "../queries/user/getLoggedInUser.js";
 
 //Get Data of logged in user
 export const getLoggedInUserService = async (req, res) => {
@@ -17,6 +18,16 @@ export const createNewUserService = async (req, res) => {
     const data = await createNewUser(req);
     res.send(JSON.stringify(data));
   } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
+export const getRefreshTokenService = async (req, res) => {
+  try {
+    const user = getLoggedInUser(req, res);
+
+    res.status(200).send(user);
+  } catch (error) {
     res.status(400).send(err.message);
   }
 };

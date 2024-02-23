@@ -1,7 +1,15 @@
 import { Steps } from "@/components/Steps";
 import { RiCoinsFill } from "react-icons/ri";
+import { useState } from "react";
 export const SignUpThird = (props) => {
   const { stage = 2, nextHandle } = props;
+  const [ammount, setAmmount] = useState(0);
+
+  const handleAmmount = (e) => {
+    setAmmount(e.target.value);
+    console.log(ammount);
+  };
+
   return (
     <div
       className="w-full flex flex-col items-center"
@@ -18,6 +26,7 @@ export const SignUpThird = (props) => {
             className="input input-bordered w-full"
             type="number"
             placeholder="Ammount"
+            onChange={handleAmmount}
           />
           <p className="text-[14px] text-gray-500">
             How much cash do you have in your wallet?

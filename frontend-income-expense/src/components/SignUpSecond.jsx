@@ -1,7 +1,28 @@
 import { Steps } from "@/components/Steps";
 import { FaMoneyBill } from "react-icons/fa";
+import { useState } from "react";
+
 export const SignUpSecond = (props) => {
   const { stage = 1, nextHandle } = props;
+  const [currency, setCurrency] = useState("");
+
+  const handleSelect = (e) => {
+    if (e.target.value === "MNT - Mongolian Tugrik") {
+      setCurrency("MNT");
+    } else if (e.target.value === "USD - United States Dollar") {
+      setCurrency("USD");
+    } else if (e.target.value === "EUR - Euro") {
+      setCurrency("EUR");
+    } else if (e.target.value === "JPY - Japanese Yen") {
+      setCurrency("JPY");
+    } else if (e.target.value === "GBP - British Pound") {
+      setCurrency("GBP");
+    } else if (e.target.value === "CNY - Chinese Yuan") {
+      setCurrency("CNY");
+    }
+    console.log(currency);
+  };
+
   return (
     <div
       className="w-full flex flex-col items-center"
@@ -14,7 +35,10 @@ export const SignUpSecond = (props) => {
         </div>
         <h1 className="text-[30px] font-bold">Select base currency</h1>
         <div className="w-full flex flex-col gap-2 items-center">
-          <select className="select w-full max-w-xs bg-gray-100 outline-none">
+          <select
+            className="select w-full max-w-xs bg-gray-100 outline-none"
+            onChange={handleSelect}
+          >
             <option selected>MNT - Mongolian Tugrik</option>
             <option>USD - United States Dollar</option>
             <option>EUR - Euro</option>

@@ -88,13 +88,19 @@ export const SignUp = (props) => {
           setPasserror(true);
         } else {
           // Sends the user data to the server if the passwords match
-          await axios.post(url, userData);
-
-          nextHandle();
+          await axios.post(url, userData).then((res) => {
+            if (res.data === "User already exists") {
+              setErrorMsg("User already exists");
+              setError(true);
+            } else {
+              nextHandle();
+            }
+          });
+          // Alerts the user if the
         }
       } catch (err) {
         // Alerts the user if there is an error
-        setErrorMsg("Nun");
+        setErrorMsg(err.message);
         setError(true);
       }
     }

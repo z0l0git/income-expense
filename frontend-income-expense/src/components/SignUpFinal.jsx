@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export const SignUpFinal = (props) => {
   const { push } = useRouter();
   const nextHandle = () => {
-    push("/dashboard");
+    push("/login");
   };
   const { stage = 3 } = props;
   return (
@@ -20,15 +20,15 @@ export const SignUpFinal = (props) => {
         <h1 className="text-[30px] font-bold">Good Job</h1>
         <div className="w-full flex flex-col gap-2 items-center">
           <p className="text-[14px] text-gray-500 text-center">
-            Your very first account has been created. Now continute to dashboard
-            and start tracking.
+            Your very first account has been created. Now Log In to start
+            tracking.
           </p>
         </div>
         <button
           className="btn btn-primary w-full rounded-[20px]"
           onClick={nextHandle}
         >
-          Go to Dashboard
+          Go to Login
         </button>
       </div>
     </div>

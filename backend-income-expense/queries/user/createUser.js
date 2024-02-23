@@ -12,11 +12,16 @@ const userCreate = async (username, email, password) => {
 };
 
 export const createNewUser = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email: upEmail, password } = req.body;
+  const getUserQuery = `SELECT * FROM users`;
+  const data = await client.query(getUserQuery);
 
   try {
-    const userId = await userCreate(username, email, password);
-    console.log(userId);
+    if (data.rows.find(({ email }) => email === upEmail)) {
+      return "User already exists";
+    }
+    const userId = await userCreate(username, upEmail, password);
+    // console.log(userId);
     return userId;
   } catch (error) {
     console.log(error);

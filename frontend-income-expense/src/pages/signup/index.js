@@ -1,13 +1,9 @@
 import { SignUp, SignUpSecond, SignUpThird, SignUpFinal } from "@/components";
 
 import { useState } from "react";
-import { useRouter } from "next/router";
-
-const SignUpSteps = [SignUp, SignUpSecond, SignUpThird, SignUpFinal];
 
 // Renders sign up page in "/signup" route
 export default function Home() {
-  const { push } = useRouter();
   const [step, setStep] = useState(0);
 
   const handleNext = () => {

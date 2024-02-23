@@ -2,6 +2,7 @@
 //
 import userRouter from "./routes/userRouter.js";
 import cors from "cors";
+import dotenv from "dotenv";
 
 // Constants
 // const port = 4000;
@@ -25,18 +26,21 @@ dbInit();
 
 const createUserTable = async () => {
   const userTableCreateQuery = `CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
-    username TEXT NOT NULL,
-    email TEXT NOT NULL,
-    password TEXT NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW()
-  );`;
+        id SERIAL PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        currency TEXT NOT NULL,
+        balance INT,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW()
+        );`;
 
   const result = await client.query(userTableCreateQuery);
 };
 
 const app = express();
 app.use(express.json());
+dotenv.config();
 
 app.get("", async (req, res) => {
   res.send("Working Fine");
@@ -52,8 +56,3 @@ app.use(cors());
 
 // Routes to use
 app.use(userRouter);
-
-// Server
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });

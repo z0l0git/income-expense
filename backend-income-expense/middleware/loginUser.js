@@ -20,7 +20,7 @@ export const loginUser = async (req, res, next) => {
     if (email === "" || password === "") {
       res.send("Please provide email and password");
     }
-    const users = await getUserQuery(email, password);
+    const users = await getUserQuery(email);
     const user = users.find((user) => user.email === email);
     if (!user) {
       throw new Error("Invalid email or password");

@@ -17,10 +17,10 @@ export const SignUpThird = (props) => {
   const handleSubmit = async () => {
     const url = "http://localhost:4000/users/update";
     console.log(userInput);
-    // await axios.put(url, userInput).then((res) => {
-    //   console.log(res);
-    //   nextHandle();
-    // });
+    await axios.put(url, userInput).then((res) => {
+      console.log(res);
+      nextHandle();
+    });
   };
 
   return (

@@ -24,6 +24,12 @@ const dbInit = async () => {
 };
 dbInit();
 
+client.on("error", async (error, cl) => {
+  if (error) {
+    await client.connect();
+  }
+});
+
 const createUserTable = async () => {
   const userTableCreateQuery = `CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,

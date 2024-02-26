@@ -7,7 +7,7 @@ export const SignUpSecond = (props) => {
   const { userInput, setUserInput } = useContext(DataContext);
 
   const { stage = 1, nextHandle } = props;
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState("MNT");
 
   useEffect(() => {
     setUserInput({ ...userInput, currency: currency });

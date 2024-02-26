@@ -37,7 +37,7 @@ const createUserTable = async () => {
         email TEXT NOT NULL,
         password TEXT NOT NULL,
         currency TEXT,
-        balance INTEGER,
+        balance TEXT,
         created_at TIMESTAMP NOT NULL DEFAULT NOW()
         );`;
 

@@ -1,13 +1,16 @@
 // Imports
 import { Steps } from "@/components/Steps";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { DataContext } from "@/context/DataContext";
 
 // Component that renders the sign up page and handles the sign up process
 export const SignUp = (props) => {
+  const { userInput, setUserInput } = useContext(DataContext);
+
   const { stage = 0, nextHandle } = props;
 
   const [show, setShow] = useState(true);

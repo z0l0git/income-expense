@@ -1,13 +1,26 @@
 import { Steps } from "@/components/Steps";
 import { RiCoinsFill } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "@/context/DataContext";
+import axios from "axios";
+
 export const SignUpThird = (props) => {
+  const { userInput, setUserInput } = useContext(DataContext);
   const { stage = 2, nextHandle } = props;
   const [ammount, setAmmount] = useState(0);
 
   const handleAmmount = (e) => {
     setAmmount(e.target.value);
+    setUserInput({ ...userInput, ammount: e.target.value });
     console.log(ammount);
+  };
+  const handleSubmit = async () => {
+    const url = "http://localhost:4000/users/update";
+    console.log(userInput);
+    // await axios.put(url, userInput).then((res) => {
+    //   console.log(res);
+    //   nextHandle();
+    // });
   };
 
   return (
@@ -34,7 +47,7 @@ export const SignUpThird = (props) => {
         </div>
         <button
           className="btn btn-primary w-full rounded-[20px]"
-          onClick={nextHandle}
+          onClick={handleSubmit}
         >
           Confirm
         </button>

@@ -1,5 +1,4 @@
 import { SignUp, SignUpSecond, SignUpThird, SignUpFinal } from "@/components";
-
 import { useState } from "react";
 
 // Renders sign up page in "/signup" route

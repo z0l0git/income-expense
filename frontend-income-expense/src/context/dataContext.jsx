@@ -5,21 +5,28 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userData, setUserData] = useState({});
-
+  const [userInput, setUserInput] = useState({});
+  console.log(userInput);
   const accessToken =
     typeof window !== "undefined" && localStorage.getItem("token");
 
   useEffect(() => {
-    const getloggedUser = async () => {
-      const { data } = await axios.get("http://localhost:4000/users/refresh", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      setUserData(data);
-    };
+    if (accessToken) {
+      const getloggedUser = async () => {
+        const { data } = await axios.get(
+          "http://localhost:4000/users/refresh",
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
 
-    getloggedUser();
+        setUserData(data);
+      };
+
+      getloggedUser();
+    }
   }, []);
 
   return (
@@ -27,6 +34,10 @@ export const DataProvider = ({ children }) => {
       value={{
         userEmail,
         setUserEmail,
+        userData,
+        setUserData,
+        userInput,
+        setUserInput,
       }}
     >
       {children}

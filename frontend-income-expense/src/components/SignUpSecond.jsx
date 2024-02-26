@@ -1,11 +1,19 @@
 import { Steps } from "@/components/Steps";
 import { FaMoneyBill } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { DataContext } from "@/context/DataContext";
 
 export const SignUpSecond = (props) => {
+  const { userInput, setUserInput } = useContext(DataContext);
+
   const { stage = 1, nextHandle } = props;
   const [currency, setCurrency] = useState("");
 
+  useEffect(() => {
+    setUserInput({ ...userInput, currency: currency });
+  }, [currency]);
+
+  // handle select
   const handleSelect = (e) => {
     if (e.target.value === "MNT - Mongolian Tugrik") {
       setCurrency("MNT");
@@ -20,7 +28,7 @@ export const SignUpSecond = (props) => {
     } else if (e.target.value === "CNY - Chinese Yuan") {
       setCurrency("CNY");
     }
-    console.log(currency);
+    setUserInput({ ...userInput, currency: currency });
   };
 
   return (

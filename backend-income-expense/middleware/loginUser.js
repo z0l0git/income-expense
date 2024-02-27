@@ -2,7 +2,7 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 // const userDB = "./models/users.json";
 import { compareHash } from "../utils/passwordHash.js";
-import { client } from "/Users/23LP5833/Desktop/income-expense/backend-income-expense/index.js";
+import { client } from "../index.js";
 
 const getUserQuery = async (email) => {
   const loginUserQuery = `SELECT * FROM users WHERE email = $1`;

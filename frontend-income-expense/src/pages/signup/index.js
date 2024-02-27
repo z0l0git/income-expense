@@ -3,7 +3,7 @@ import { useState } from "react";
 
 // Renders sign up page in "/signup" route
 export default function Home() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(0);
 
   const handleNext = () => {
     setStep(step + 1);

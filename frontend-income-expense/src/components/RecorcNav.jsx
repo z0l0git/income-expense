@@ -12,8 +12,11 @@ export const RecordNav = () => {
           <IoIosArrowForward />
         </button>
       </div>
-      <select className="select h-[35px] w-[200px] max-w-xs font-semibold">
-        <option selected>Newest First</option>
+      <select
+        className="select h-[35px] w-[200px] max-w-xs font-semibold"
+        defaultValue="Newest First"
+      >
+        <option>Newest First</option>
         <option>Oldest First</option>
         <option>A - Z</option>
         <option>Z - A</option>

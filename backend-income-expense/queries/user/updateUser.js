@@ -1,4 +1,4 @@
-import { client } from "/Users/23LP5833/Desktop/income-expense/backend-income-expense/index.js";
+import { client } from "../../index.js";
 
 export const userUpdate = async (req, res) => {
   const { currency, balance } = req.body;

@@ -1,4 +1,4 @@
-import { client } from "/Users/23LP5833/Desktop/income-expense/backend-income-expense/index.js";
+import { client } from "../../index.js";
 import { makeHash } from "../../utils/passwordHash.js";
 
 const userCreate = async (username, email, password) => {

@@ -11,13 +11,13 @@ export const SignUpThird = (props) => {
 
   const handleAmmount = (e) => {
     setAmmount(e.target.value);
-    setUserInput({ ...userInput, ammount: e.target.value });
+    setUserInput({ ...userInput, balance: e.target.value });
     console.log(ammount);
   };
   const handleSubmit = async () => {
     const url = "http://localhost:4000/users/update";
     console.log(userInput);
-    await axios.put(url, userInput).then((res) => {
+    await axios.post(url, userInput).then((res) => {
       console.log(res);
       nextHandle();
     });

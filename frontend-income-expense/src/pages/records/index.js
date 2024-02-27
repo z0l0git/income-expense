@@ -6,19 +6,22 @@ import { CheckData } from "@/components/CheckData";
 import { MdHomeFilled } from "react-icons/md";
 import { PiForkKnifeFill } from "react-icons/pi";
 import { useRouter } from "next/router";
-
+import { useContext } from "react";
+import { DataContext } from "@/context/DataContext";
 {
   /* <MdHomeFilled size={22} color="#FFF" /> */
 }
 
 export default function Home() {
+  const { userData } = useContext(DataContext);
+
   const { push } = useRouter();
   const data = [
     {
       icon: <MdHomeFilled size={22} color="#FFF" />,
       name: "Lending & Renting",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -26,7 +29,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: false,
     },
     {
@@ -34,7 +37,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -42,7 +45,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -50,7 +53,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
   ];
@@ -60,7 +63,15 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
+      ifIncome: false,
+    },
+    {
+      iconColor: "#F54949",
+      icon: <PiForkKnifeFill size={22} color="#FFF" />,
+      name: "Food & Drinks",
+      time: "14:00",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -68,7 +79,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -76,7 +87,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -84,7 +95,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
     {
@@ -92,15 +103,7 @@ export default function Home() {
       icon: <PiForkKnifeFill size={22} color="#FFF" />,
       name: "Food & Drinks",
       time: "14:00",
-      price: "- 1,000₮",
-      ifIncome: true,
-    },
-    {
-      iconColor: "#F54949",
-      icon: <PiForkKnifeFill size={22} color="#FFF" />,
-      name: "Food & Drinks",
-      time: "14:00",
-      price: "- 1,000₮",
+      price: "1,000₮",
       ifIncome: true,
     },
   ];
@@ -122,6 +125,7 @@ export default function Home() {
           >
             Records
           </p>
+          <p>{userData.username}</p>
         </div>
         <div className="flex items-center gap-5">
           <Modal />

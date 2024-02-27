@@ -20,6 +20,7 @@ export const client = new pg.Client({
 const dbInit = async () => {
   await client.connect();
   await createUserTable();
+  await createRecordTable();
   console.log("Connected to database");
 };
 dbInit();
@@ -42,6 +43,21 @@ const createUserTable = async () => {
         );`;
 
   const result = await client.query(userTableCreateQuery);
+};
+
+const createRecordTable = async () => {
+  const recordTableCreateQuery = `CREATE TABLE IF NOT EXISTS records (
+    id SERIAL PRIMARY KEY,
+    ifIncome BOOLEAN,
+    amount INT,
+    category TEXT,
+    date DATE,
+    time TIME,
+    payee TEXT,
+    note TEXT,
+    userEmail TEXT
+  )`;
+  const recordResult = await client.query(recordTableCreateQuery);
 };
 
 const app = express();

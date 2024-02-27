@@ -4,17 +4,68 @@ import { useState } from "react";
 import { FaCirclePlus, FaGift } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
 import { PiForkKnifeFill, PiWineFill } from "react-icons/pi";
+import { FaTaxi, FaTshirt } from "react-icons/fa";
+import { useContext } from "react";
+import { DataContext } from "@/context/DataContext";
 
 export const Modal = () => {
+  const { recordInput, setRecordInput } = useContext(DataContext);
   const [button, setButton] = useState(true);
   const [display, setDisplay] = useState(false);
 
+  const categoryData = [
+    {
+      id: 1,
+      name: "Home",
+      icon: <GoHomeFill color="#0166FF" size={24} />,
+    },
+    {
+      id: 2,
+      name: "Gift",
+      icon: <FaGift color="#FF4545" size={24} />,
+    },
+    {
+      id: 3,
+      name: "Food",
+      icon: <PiForkKnifeFill color="#FB8A22" size={24} />,
+    },
+    {
+      id: 4,
+      name: "Drinks",
+      icon: <PiWineFill color="#FB8A22" size={24} />,
+    },
+    {
+      id: 5,
+      name: "Taxi",
+      icon: <FaTaxi color="#FB8A22" size={24} />,
+    },
+    {
+      id: 6,
+      name: "Clothes",
+      icon: <FaTshirt color="#FB8A22" size={24} />,
+    },
+  ];
   const handleDisplay = () => {
     setDisplay(!display);
   };
 
   const handleClick = () => {
     setButton(!button);
+    setRecordInput({
+      ...recordInput,
+      ifIncome: button ? true : false,
+    });
+  };
+
+  const handleInput = (e) => {
+    setRecordInput({ ...recordInput, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(recordInput);
+  };
+  const handleCategory = (text) => {
+    setRecordInput({ ...recordInput, category: text });
   };
 
   return (
@@ -60,6 +111,8 @@ export const Modal = () => {
                 <label className="absolute top-3 ml-5 z-10">Amount</label>
                 <input
                   type="number"
+                  name="amount"
+                  onChange={handleInput}
                   placeholder="₮ 000.00"
                   className="bg-slate-100 p-5 absolute top-0 h-[76px] rounded-xl w-full pt-12"
                 />
@@ -70,10 +123,27 @@ export const Modal = () => {
                   <div
                     tabIndex={1000}
                     role="button"
-                    className="btn m-1 w-full text-left flex justify-start text-[#D1D5DB] text-[16px] hover:bg-slate-100 font-light bg-slate-100 relative"
+                    className="btn m-1 w-full text-left flex justify-start bg-slate-100 relative"
                     onClick={handleDisplay}
                   >
-                    Find or choose category
+                    {!recordInput.category ? (
+                      <p className="text-[#D1D5DB] text-[16px] hover:bg-slate-100 font-light">
+                        Find or choose category
+                      </p>
+                    ) : (
+                      <div>
+                        {categoryData.map((item) => {
+                          if (item.name === recordInput.category) {
+                            return (
+                              <div className="flex items-center gap-3">
+                                {item.icon}
+                                <p className="text-[16px] ">{item.name}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+                    )}
                   </div>
                   <ul
                     tabIndex={1000}
@@ -86,32 +156,14 @@ export const Modal = () => {
                         <p className="text-[16px] ">Add Category</p>
                       </div>
                     </li>
-                    <li>
-                      <div className="flex  ">
-                        <GoHomeFill color="#0166FF" size={24} />
-                        <p className="text-[16px] ">Home</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex  ">
-                        <FaGift color="#FF4545" size={24} />
-                        <p className="text-[16px] ">Gift</p>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="flex  ">
-                        <PiForkKnifeFill color="#FB8A22" size={24} />
-                        <p className="text-[16px] ">Food</p>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="flex  ">
-                        <PiWineFill color="#FB8A22" size={24} />
-                        <p className="text-[16px] ">Drinks</p>
-                      </div>
-                    </li>
+                    {categoryData.map((item) => (
+                      <li onClick={() => handleCategory(item.name)}>
+                        <div className="flex">
+                          {item.icon}
+                          <p className="text-[16px] ">{item.name}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -134,6 +186,7 @@ export const Modal = () => {
               <button
                 className="rounded-full bg-[#0166FF] w-full text-white text-[15px] px-[10px] py-2 mt-6"
                 style={{ backgroundColor: button ? "#0166FF" : "#16A34A" }}
+                onClick={handleSubmit}
               >
                 Add Record
               </button>
@@ -141,19 +194,18 @@ export const Modal = () => {
             <div className="w-[48%] flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <p>Payee</p>
-                <select className="select w-full bg-slate-100">
-                  <option selected>Write Here</option>
-                  <option>Write Here</option>
-                  <option>Write Here</option>
-                  <option>Write Here</option>
-                  <option>Write Here</option>
-                  <option>Write Here</option>
-                </select>
+                <input
+                  type="text"
+                  name="payee"
+                  placeholder="Write Here"
+                  className="input w-full bg-slate-100"
+                />
               </div>
               <div className="flex flex-col gap-2">
                 <p>Note</p>
                 <textarea
                   className="textarea w-full bg-slate-100 h-[268px]"
+                  name="note"
                   style={{ resize: "none" }}
                   placeholder="Write Here"
                 ></textarea>

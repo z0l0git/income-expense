@@ -6,6 +6,7 @@ export const DataProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userData, setUserData] = useState({});
   const [userInput, setUserInput] = useState({});
+  const [recordInput, setRecordInput] = useState({});
   console.log(userInput);
   const accessToken =
     typeof window !== "undefined" && localStorage.getItem("token");
@@ -38,6 +39,8 @@ export const DataProvider = ({ children }) => {
         setUserData,
         userInput,
         setUserInput,
+        recordInput,
+        setRecordInput,
       }}
     >
       {children}

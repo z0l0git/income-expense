@@ -33,7 +33,7 @@ export const CheckData = (props) => {
           ifIncome ? "#23E01F" : "#F54949"
         } font-bold text-[16px]`}
       >
-        {price}
+        {ifIncome ? "+" : "-"} {price}
       </p>
     </div>
   );

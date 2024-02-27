@@ -40,7 +40,9 @@ export default function Home() {
       </div>
       <div className="bg-slate-200 h-fit w-full px-[100px] py-10 flex flex-col gap-10 items-center">
         <div className="flex justify-between w-full gap-5">
-          <BalanceCard ammount={"10,000,00"} />
+          <BalanceCard
+            ammount={parseInt(userData.balance).toLocaleString("en-US")}
+          />
           <DashCard1
             incomeAmmount={"1,200,000₮"}
             incomePercent={"32% from last month"}

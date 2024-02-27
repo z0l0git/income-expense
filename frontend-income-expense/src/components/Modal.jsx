@@ -13,6 +13,7 @@ const url = "http://localhost:4000/record/create";
 
 export const Modal = () => {
   const { recordInput, setRecordInput, userData } = useContext(DataContext);
+
   const [button, setButton] = useState(true);
   const [display, setDisplay] = useState(false);
 
@@ -143,10 +144,10 @@ export const Modal = () => {
                       </p>
                     ) : (
                       <div>
-                        {categoryData.map((item) => {
+                        {categoryData.map((item, i) => {
                           if (item.name === recordInput.category) {
                             return (
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-3" key={i}>
                                 {item.icon}
                                 <p className="text-[16px] ">{item.name}</p>
                               </div>

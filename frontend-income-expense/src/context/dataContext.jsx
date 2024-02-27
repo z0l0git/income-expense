@@ -8,6 +8,7 @@ export const DataProvider = ({ children }) => {
   const [userInput, setUserInput] = useState({});
   const [recordInput, setRecordInput] = useState({});
   console.log(userInput);
+
   const accessToken =
     typeof window !== "undefined" && localStorage.getItem("token");
 

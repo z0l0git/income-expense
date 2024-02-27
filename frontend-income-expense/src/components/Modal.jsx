@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 import { useState } from "react";
 import { FaCirclePlus, FaGift } from "react-icons/fa6";
@@ -8,8 +9,10 @@ import { FaTaxi, FaTshirt } from "react-icons/fa";
 import { useContext } from "react";
 import { DataContext } from "@/context/DataContext";
 
+const url = "http://localhost:4000/record/create";
+
 export const Modal = () => {
-  const { recordInput, setRecordInput } = useContext(DataContext);
+  const { recordInput, setRecordInput, userData } = useContext(DataContext);
   const [button, setButton] = useState(true);
   const [display, setDisplay] = useState(false);
 
@@ -51,19 +54,27 @@ export const Modal = () => {
 
   const handleClick = () => {
     setButton(!button);
-    setRecordInput({
-      ...recordInput,
-      ifIncome: button ? true : false,
-    });
   };
 
   const handleInput = (e) => {
     setRecordInput({ ...recordInput, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(recordInput);
+
+  const handleSubmit = async () => {
+    setRecordInput({
+      ...recordInput,
+      userEmail: userData.email,
+      ifIncome: button ? true : false,
+    });
+    try {
+      await axios.post(url, recordInput);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
+
+  console.log(recordInput);
+
   const handleCategory = (text) => {
     setRecordInput({ ...recordInput, category: text });
   };
@@ -172,6 +183,8 @@ export const Modal = () => {
                   <label className="">Date</label>
                   <input
                     type="date"
+                    name="date"
+                    onChange={handleInput}
                     className="bg-[#F3F4F6] p-2 border-2 rounded-xl "
                   />
                 </div>
@@ -179,6 +192,8 @@ export const Modal = () => {
                   <label className="">Time</label>
                   <input
                     type="time"
+                    name="time"
+                    onChange={handleInput}
                     className="bg-[#F3F4F6] p-2 border-2 rounded-xl"
                   />
                 </div>
@@ -199,6 +214,7 @@ export const Modal = () => {
                   name="payee"
                   placeholder="Write Here"
                   className="input w-full bg-slate-100"
+                  onChange={handleInput}
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -208,6 +224,7 @@ export const Modal = () => {
                   name="note"
                   style={{ resize: "none" }}
                   placeholder="Write Here"
+                  onChange={handleInput}
                 ></textarea>
               </div>
             </div>

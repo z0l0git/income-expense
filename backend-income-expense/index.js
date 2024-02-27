@@ -19,6 +19,7 @@ export const client = new pg.Client({
 });
 const dbInit = async () => {
   await client.connect();
+  await client.query("SET statement_timeout = 0");
   await createUserTable();
   await createRecordTable();
   console.log("Connected to database");
@@ -48,14 +49,14 @@ const createUserTable = async () => {
 const createRecordTable = async () => {
   const recordTableCreateQuery = `CREATE TABLE IF NOT EXISTS records (
     id SERIAL PRIMARY KEY,
-    ifIncome BOOLEAN,
-    amount INT,
-    category TEXT,
-    date DATE,
-    time TIME,
-    payee TEXT,
-    note TEXT,
-    userEmail TEXT
+    ifIncome BOOLEAN NOT NULL,
+    amount INT NOT NULL,
+    category TEXT NOT NULL,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    payee TEXT NOT NULL,
+    note TEXT NOT NULL,
+    userEmail TEXT NOT NULL
   )`;
   const recordResult = await client.query(recordTableCreateQuery);
 };

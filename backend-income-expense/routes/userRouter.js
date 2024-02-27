@@ -15,9 +15,13 @@ const userRouter = express.Router();
 
 //Post Functions
 userRouter.post("/users", createNewUserService);
+
 userRouter.post("/users/login", loginUser, getLoggedInUserService);
+
 userRouter.get("/users/refresh", getRefreshTokenService);
+
 userRouter.post("/users/update", updateUserService);
+
 userRouter.post("/record/create", createRecordService);
 
 //Get Functions

@@ -10,7 +10,6 @@ export const userUpdate = async (req, res) => {
 
   try {
     const userUpd = await client.query(updateUserQuery, [currency, balance]);
-    // console.log(userId);
     return userUpd;
   } catch (error) {
     console.log(error);

@@ -22,6 +22,7 @@ const dbInit = async () => {
   await client.query("SET statement_timeout = 0");
   await createUserTable();
   await createRecordTable();
+  await createCategoryTable();
   console.log("Connected to database");
 };
 dbInit();
@@ -59,6 +60,17 @@ const createRecordTable = async () => {
     userEmail TEXT NOT NULL
   )`;
   const recordResult = await client.query(recordTableCreateQuery);
+};
+
+const createCategoryTable = async () => {
+  const categoryTableCreateQuery = `CREATE TABLE IF NOT EXISTS category (
+    id SERIAL PRIMARY KEY,
+    category TEXT NOT NULL,
+    icon TEXT NOT NULL
+    
+  )`;
+
+  const categoryResult = await client.query(categoryTableCreateQuery);
 };
 
 const app = express();

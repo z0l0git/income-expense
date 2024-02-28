@@ -46,8 +46,9 @@ export const SignUpSecond = (props) => {
           <select
             className="select w-full max-w-xs bg-gray-100 outline-none"
             onChange={handleSelect}
+            defaultValue={"MNT - Mongolian Tugrik"}
           >
-            <option selected>MNT - Mongolian Tugrik</option>
+            <option>MNT - Mongolian Tugrik</option>
             <option>USD - United States Dollar</option>
             <option>EUR - Euro</option>
             <option>JPY - Japanese Yen</option>

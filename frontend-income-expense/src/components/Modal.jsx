@@ -74,8 +74,6 @@ export const Modal = () => {
     }
   };
 
-  console.log(recordInput);
-
   const handleCategory = (text) => {
     setRecordInput({ ...recordInput, category: text });
   };
@@ -162,12 +160,6 @@ export const Modal = () => {
                     className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full h-[189px] absolute top-15 z-100000 hidden overflow-y-scroll"
                     style={{ display: display ? "block" : "none" }}
                   >
-                    <li>
-                      <div className="flex border-b-4 border-slate-300 ">
-                        <FaCirclePlus color="#0166FF" size={20} />
-                        <p className="text-[16px] ">Add Category</p>
-                      </div>
-                    </li>
                     {categoryData.map((item) => (
                       <li onClick={() => handleCategory(item.name)}>
                         <div className="flex">

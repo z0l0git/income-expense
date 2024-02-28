@@ -110,7 +110,7 @@ export default function Home() {
 
   return (
     <div className="w-[1440px] max-w-[1440px] h-fit flex flex-col items-center m-auto bg-slate-200">
-      <div className="w-screen max-w-screen flex justify-center gap-[38%] items-center py-5 bg-white mb-[25px]">
+      <div className="w-screen max-w-screen flex justify-between px-[500px] items-center py-5 bg-white mb-[25px]">
         <div className="flex items-center gap-7 ">
           <Image src="/headerlogo.png" alt="logo" width={40} height={40} />
           <p

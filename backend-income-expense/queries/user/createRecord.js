@@ -38,6 +38,7 @@ export const createNewRecord = async (req, res) => {
       note,
       userEmail
     );
+
     return record;
   } catch (err) {
     console.log(err.message);

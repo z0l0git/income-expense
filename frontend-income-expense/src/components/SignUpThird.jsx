@@ -18,7 +18,6 @@ export const SignUpThird = (props) => {
     const url = "http://localhost:4000/users/update";
     console.log(userInput);
     await axios.post(url, userInput).then((res) => {
-      console.log(res);
       nextHandle();
     });
   };

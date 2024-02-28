@@ -7,7 +7,7 @@ import { BalanceCard } from "@/components/BalanceCard";
 import { RecordsCard } from "@/components/RecordsCard";
 import { useContext } from "react";
 import { DataContext } from "@/context/DataContext";
-
+import { Modal } from "@/components/Modal";
 import { useRouter } from "next/router";
 // import { DoughnutChart } from "@/components/DoghnutChart";
 export default function Home() {
@@ -32,9 +32,7 @@ export default function Home() {
           <p className="">{userData.username}</p>
         </div>
         <div className="flex items-center gap-5">
-          <button className="btn btn-sm h-[35px] text-[15px] rounded-full bg-[#0166FF] font-semibold text-white px-5">
-            + Record
-          </button>
+          <Modal />
           <Image src="/Avatar.png" alt="avatar" width={40} height={40} />
         </div>
       </div>

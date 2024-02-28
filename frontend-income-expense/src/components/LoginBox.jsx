@@ -57,7 +57,7 @@ export const LoginBox = () => {
           setError(true);
           setErrorMsg(res.data);
         } else {
-          localStorage.setItem(`token`, res.data);
+          localStorage.setItem(`token`, res.data.token);
           push("/dashboard");
         }
       });

@@ -10,6 +10,7 @@ import { loginUser } from "../middleware/loginUser.js";
 import { tokenCheck } from "../middleware/tokenCheck.js";
 import { createRecordService } from "../controllers/usersController.js";
 import { createCategoryService } from "../controllers/usersController.js";
+import { getUserRecordsService } from "../controllers/usersController.js";
 
 //Router declare to variable
 const userRouter = express.Router();
@@ -24,6 +25,8 @@ userRouter.get("/users/refresh", getRefreshTokenService);
 userRouter.post("/users/update", updateUserService);
 
 userRouter.post("/record/create", createRecordService);
+
+userRouter.post("/records", getUserRecordsService);
 
 userRouter.post("/category/create", createCategoryService);
 

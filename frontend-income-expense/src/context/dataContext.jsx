@@ -30,6 +30,7 @@ export const DataProvider = ({ children }) => {
           push("/login");
         }
       };
+
       getloggedUser();
     } else {
       push("/login");

@@ -5,12 +5,24 @@ import { userUpdate } from "../queries/user/updateUser.js";
 import jwt from "jsonwebtoken";
 import { createNewRecord } from "../queries/user/createRecord.js";
 import { createCategory } from "../queries/user/createCategory.js";
+import { getUserRecords } from "../queries/user/getUserRecords.js";
+
+export const getUserRecordsService = async (req, res) => {
+  try {
+    const data = await getUserRecords(req);
+
+    res.send(JSON.stringify(data));
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
 
 //Create record
 
 export const createRecordService = async (req, res) => {
   try {
     const data = await createNewRecord(req);
+
     res.send(JSON.stringify(data));
   } catch (err) {
     res.status(400).send(err.message);

@@ -1,7 +1,7 @@
 import { client } from "../../index.js";
 
 const recordCreate = async (
-  ifIncome,
+  income,
   amount,
   category,
   date,
@@ -10,9 +10,9 @@ const recordCreate = async (
   note,
   userEmail
 ) => {
-  const createRecordQuery = `INSERT INTO records (ifIncome, amount, category, date, time, payee, note, userEmail) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
+  const createRecordQuery = `INSERT INTO records (income, amount, category, date, time, payee, note, userEmail) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
   const record = await client.query(createRecordQuery, [
-    ifIncome,
+    income,
     amount,
     category,
     date,
@@ -25,11 +25,11 @@ const recordCreate = async (
 };
 
 export const createNewRecord = async (req, res) => {
-  const { ifIncome, amount, category, date, time, payee, note, userEmail } =
+  const { income, amount, category, date, time, payee, note, userEmail } =
     req.body;
   try {
     const record = await recordCreate(
-      ifIncome,
+      income,
       amount,
       category,
       date,

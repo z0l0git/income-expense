@@ -1,11 +1,22 @@
 import React from "react";
 import axios from "axios";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCirclePlus, FaGift } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
 import { PiForkKnifeFill, PiWineFill } from "react-icons/pi";
-import { FaTaxi, FaTshirt } from "react-icons/fa";
+import {
+  FaTaxi,
+  FaTshirt,
+  FaCar,
+  FaPhone,
+  FaMoneyBillAlt,
+} from "react-icons/fa";
+import { GrMoney } from "react-icons/gr";
+import { FcMoneyTransfer } from "react-icons/fc";
+import { MdLocalMovies } from "react-icons/md";
+import { TbDotsCircleHorizontal } from "react-icons/tb";
+
 import { useContext } from "react";
 import { DataContext } from "@/context/DataContext";
 
@@ -20,7 +31,7 @@ export const Modal = () => {
   const categoryData = [
     {
       id: 1,
-      name: "Home",
+      name: "Housing",
       icon: <GoHomeFill color="#0166FF" size={24} />,
     },
     {
@@ -36,19 +47,49 @@ export const Modal = () => {
     {
       id: 4,
       name: "Drinks",
-      icon: <PiWineFill color="#FB8A22" size={24} />,
+      icon: <PiWineFill color="purple" size={24} />,
     },
     {
       id: 5,
-      name: "Taxi",
-      icon: <FaTaxi color="#FB8A22" size={24} />,
+      name: "Transportation",
+      icon: <FaTaxi color="yellow" size={24} />,
     },
     {
       id: 6,
-      name: "Clothes",
-      icon: <FaTshirt color="#FB8A22" size={24} />,
+      name: "Shopping",
+      icon: <FaTshirt color="red" size={24} />,
+    },
+
+    { id: 7, name: "Vehicle", icon: <FaCar color="black" size={24} /> },
+    {
+      id: 8,
+      name: "Entertainment",
+      icon: <MdLocalMovies color="gray" size={24} />,
+    },
+
+    {
+      id: 9,
+      name: "Communication",
+      icon: <FaPhone color="cyan" size={24} />,
+    },
+    {
+      id: 10,
+      name: "Financial",
+      icon: <FaMoneyBillAlt color="green" size={24} />,
+    },
+    { id: 11, name: "Investment", icon: <GrMoney color="lime" size={24} /> },
+    {
+      id: 12,
+      name: "Income",
+      icon: <FcMoneyTransfer size={24} />,
+    },
+    {
+      id: 13,
+      name: "Other",
+      icon: <TbDotsCircleHorizontal color="blue" size={24} />,
     },
   ];
+
   const handleDisplay = () => {
     setDisplay(!display);
   };
@@ -58,15 +99,16 @@ export const Modal = () => {
   };
 
   const handleInput = (e) => {
-    setRecordInput({ ...recordInput, [e.target.name]: e.target.value });
+    setRecordInput({
+      ...recordInput,
+      [e.target.name]: e.target.value,
+      userEmail: userData.email,
+      income: button ? true : false,
+    });
   };
 
   const handleSubmit = async () => {
-    setRecordInput({
-      ...recordInput,
-      userEmail: userData.email,
-      ifIncome: button ? true : false,
-    });
+    console.log(recordInput);
     try {
       await axios.post(url, recordInput);
     } catch (err) {
@@ -76,6 +118,7 @@ export const Modal = () => {
 
   const handleCategory = (text) => {
     setRecordInput({ ...recordInput, category: text });
+    setDisplay(false);
   };
 
   return (
@@ -161,7 +204,10 @@ export const Modal = () => {
                     style={{ display: display ? "block" : "none" }}
                   >
                     {categoryData.map((item) => (
-                      <li onClick={() => handleCategory(item.name)}>
+                      <li
+                        onClick={() => handleCategory(item.name)}
+                        key={item.id}
+                      >
                         <div className="flex">
                           {item.icon}
                           <p className="text-[16px] ">{item.name}</p>

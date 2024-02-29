@@ -50,7 +50,7 @@ const createUserTable = async () => {
 const createRecordTable = async () => {
   const recordTableCreateQuery = `CREATE TABLE IF NOT EXISTS records (
     id SERIAL PRIMARY KEY,
-    ifIncome BOOLEAN NOT NULL,
+    income BOOLEAN NOT NULL,
     amount INT NOT NULL,
     category TEXT NOT NULL,
     date DATE NOT NULL,

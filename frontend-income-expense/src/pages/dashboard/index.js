@@ -14,7 +14,6 @@ export default function Home() {
   const { userData } = useContext(DataContext);
   const { push } = useRouter();
 
-  console.log(userData.username);
   return (
     <div className="w-[1440px] h-fit flex flex-col items-center m-auto bg-slate-200">
       <div className="w-screen flex justify-between items-center px-[500px] py-5 bg-white mb-[25px]">
